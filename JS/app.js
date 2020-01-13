@@ -11,7 +11,24 @@
 // 5. Display the values of each array as unordered lists in the browser
 // 6. Calculating the sum of these hourly totals;
 
+
 var randomNumber = Math.floor((Math.random() * 100) + 1);
+var maxCustomers = 65;
+var minCustomers = 23;
+console.log("this is the first " + randomNumber);
+
+if(randomNumber > maxCustomers) {
+    randomNumber -= 25;
+    console.log(randomNumber);
+    
+  }
+  
+  if(randomNumber < minCustomers) {
+    randomNumber += 25;
+    //console.log(randomNumber);
+    
+  }
+
 
 var seattle = {
 
