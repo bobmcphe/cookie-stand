@@ -18,8 +18,13 @@ var seattle = {
     avgCustomers: 0,
     avgCookiesPerCustomer: 0,
 
-    var getRandomNumber: randomNumber,
+    getRandomNumber: randomNumber,
+    averageCategories: ['MinCustomers', 'MaxCustomers', 'AvgCookiesPCustomer'],
+    averageNumbers: [23, 65, 6.5],
 
 
 }
+
+console.log(randomNumber);
+console.log(avgCustomers);
 
