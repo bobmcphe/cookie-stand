@@ -12,32 +12,34 @@
 // 6. Calculating the sum of these hourly totals;
 
 
-var randomNumber = Math.floor((Math.random() * 100) + 1);
-var maxCustomers = 65;
-var minCustomers = 23;
-console.log("this is the first " + randomNumber);
-
-if(randomNumber > maxCustomers) {
-    randomNumber -= 25;
-    console.log(randomNumber);
-    
-  }
-  
-  if(randomNumber < minCustomers) {
-    randomNumber += 25;
-    //console.log(randomNumber);
-    
-  }
 
 
 var seattle = {
 
-   // avgCustomers: 0,
+    // avgCustomers: 0,
     //avgCookiesPerCustomer: 0,
+    // averageCategories: ['MinCustomers', 'MaxCustomers', 'AvgCookiesPCustomer'],
+    // averageNumbers: [23, 65, 6.5],
+    
+    randomNumber: Math.floor((Math.random() * 100) + 1),
 
-    getRandomNumber: randomNumber,
-    averageCategories: ['MinCustomers', 'MaxCustomers', 'AvgCookiesPCustomer'],
-    averageNumbers: [23, 65, 6.5],
+    
+        var maxCustomers = 65;
+        var minCustomers = 23;
+        console.log("this is the first " + randomNumber);
+
+        if(randomNumber > maxCustomers) {
+            randomNumber -= 25;
+            console.log(randomNumber);
+            
+        }
+        
+        if(randomNumber < minCustomers) {
+            randomNumber += 38; //this is a crappy and imperfect fix, however.
+            //console.log(randomNumber);
+            
+        }
+
 
 
 }
