@@ -15,8 +15,8 @@ var randomNumber = Math.floor((Math.random() * 100) + 1);
 
 var seattle = {
 
-    avgCustomers: 0,
-    avgCookiesPerCustomer: 0,
+   // avgCustomers: 0,
+    //avgCookiesPerCustomer: 0,
 
     getRandomNumber: randomNumber,
     averageCategories: ['MinCustomers', 'MaxCustomers', 'AvgCookiesPCustomer'],
@@ -26,5 +26,5 @@ var seattle = {
 }
 
 console.log(randomNumber);
-console.log(avgCustomers);
+//console.log(avgCustomers);
 
