@@ -1,44 +1,57 @@
-// Within your javascript file (example: app.js), create separate JS object literals for each 
-// shop location that outputs the following to the sales.html file:
-
-// 1. Stores the min/max hourly customers, and the average cookies per customer, in object properties
-// 2. Uses a method of that object to generate a random number of customers per hour. 
-// Objects/Math/random
-// 3. Calculate and store the simulated amounts of cookies purchased for each hour at each location using 
-// average cookies purchased and the random number of customers generated
-// 4. Store the results for each location in a separate array… perhaps as a property of the object 
-// representing that location
-// 5. Display the values of each array as unordered lists in the browser
-// 6. Calculating the sum of these hourly totals;
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 
+// CreateStore = function(name, max, min, avg) {
+//   var random = [];
+//   var salesPerHour = [];
+// }
 
+// new CreateStore('test', 12, 66, 5.5);
+
+var seattleAnswer = '';
 
 var seattle = {
 
-    // avgCustomers: 0,
-    //avgCookiesPerCustomer: 0,
-    // averageCategories: ['MinCustomers', 'MaxCustomers', 'AvgCookiesPCustomer'],
-    // averageNumbers: [23, 65, 6.5],
+  name: 'seattle',
+  maxCustomers: 65,
+  minCustomers: 23,
+  avgCookiesPerC: 6.3, 
+  aveCookieSalesPerHr: [],
+  
 
-        randomNumber: Math.floor((Math.random() * 100) + 1),   
-        maxCustomers: 65,
-        minCustomers: 23,
 
-    createN: function() { //says undefined
-        if(randomNumber > maxCustomers) {
-            randomNumber -= 25;
-            console.log(randomNumber);
+  getRandom: function() {
+    var final = (Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
+    return Math.floor(final);
+  },
+
+
+  getHourlySales: function() {
+        var totalCookiesPerHour = 0;
+
+      for (var i=0; i<hours.length; i++) {
+        var customersPerHour = this.getRandom();
+        console.log(customersPerHour)
+        var totalCookiesPerHour = Math.floor((customersPerHour * this.avgCookiesPerC));
+        this.aveCookieSalesPerHr.push(totalCookiesPerHour);
+
+        console.log(this.aveCookieSalesPerHr);
         }
-        
-        if(randomNumber < minCustomers) {
-            randomNumber += 38; //this is a crappy and imperfect fix, however.
-            //console.log(randomNumber);   
-        }
-    },
+  },
+
+    concatArrays: function (){
+    for(var i=0; i < hours.length; i++) {
+      //console.log('we are here' + i);
+      seattleAnswer += `${hours[i]}: ${this.aveCookieSalesPerHr[i]} . `;
+      
+    }
+    return seattleAnswer;
+  }
 }
 
-console.log(createN());
-//console.log(avgCustomers);
 
-//console.log("this is the first " + randomNumber)
+   
+seattle.getHourlySales();
+seattle.concatArrays();
+
+
