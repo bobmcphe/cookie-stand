@@ -46,12 +46,49 @@ var seattle = {
       
     }
     return seattleAnswer;
+  },
+  
+render: function(){
+  var fishData = document.getElementById('fishData');
+
+  // call an external function and get me a random number
+  // var randomNumber = random(hours.length);
+
+  // create for me a p tag and append it onto the the fishData tag
+  var thePtagForfish = document.createElement('p');
+  thePtagForfish.textContent = this.name;
+  fishData.appendChild(thePtagForfish);
+
+  // create for me another p tag and set the value to a specific item in the array
+  var output = document.createElement('p');
+  output.textContent = hours[this.getRandom];
+  fishData.appendChild(output);
+
+  // output all of the toys possible onto the DOM
+  var ulID = document.getElementById('ulID');
+  for(var i=0; i <hours.length; i++){
+    var newTag = document.createElement('li');
+    newTag.textContent = hours[i] + ': ' + this.aveCookieSalesPerHr[i];
+
+    ulID.appendChild(newTag);
   }
+
+}
 }
 
-
-   
 seattle.getHourlySales();
 seattle.concatArrays();
 
 
+
+
+// DOM Manipulation
+var parent = document.getElementById('header');
+
+var potato = document.createElement('h1');
+potato.textContent = "Hello Shelby!";
+parent.appendChild(potato);
+
+
+
+seattle.render();
