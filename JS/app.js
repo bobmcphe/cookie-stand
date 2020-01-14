@@ -20,30 +20,25 @@ var seattle = {
     //avgCookiesPerCustomer: 0,
     // averageCategories: ['MinCustomers', 'MaxCustomers', 'AvgCookiesPCustomer'],
     // averageNumbers: [23, 65, 6.5],
-    
-    randomNumber: Math.floor((Math.random() * 100) + 1),
 
-    
-        var maxCustomers = 65;
-        var minCustomers = 23;
-        console.log("this is the first " + randomNumber);
+        randomNumber: Math.floor((Math.random() * 100) + 1),   
+        maxCustomers: 65,
+        minCustomers: 23,
 
+    createN: function() { //says undefined
         if(randomNumber > maxCustomers) {
             randomNumber -= 25;
             console.log(randomNumber);
-            
         }
         
         if(randomNumber < minCustomers) {
             randomNumber += 38; //this is a crappy and imperfect fix, however.
-            //console.log(randomNumber);
-            
+            //console.log(randomNumber);   
         }
-
-
-
+    },
 }
 
-console.log(randomNumber);
+console.log(createN());
 //console.log(avgCustomers);
 
+//console.log("this is the first " + randomNumber)
