@@ -1,0 +1,101 @@
+/* body {
+    background-color: salmon;
+} */
+
+
+
+#salmon {
+    height: 12em;
+    display: block;
+    margin: auto;  
+    margin-top: 100px; 
+    padding: 70px;
+    padding-top: 0px;
+}
+
+
+body {
+    background-color: seashell;
+    /* width: 960px; */
+    border: 1px solid black ;
+}
+
+h1 {
+    display: block;
+    padding-top: 10mm;
+    font-size: 48px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: seagreen;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+div p {
+    padding-top: 5%;
+    font-size: 14px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: 1px solid black ;
+
+}
+footer section p{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: 1px solid black ;
+}
+
+#box2 {
+    background-color:  rgb(247, 169, 133);
+    width: 960px;
+    margin: auto;
+    border-radius: 3px;
+    border: 1px solid black ;
+}
+
+#box2 p {
+    padding: 70px;
+    border: 1px solid black ;
+}
+
+#box1 {
+    background-color:  rgb(247, 169, 133);
+    width: 960px;
+    margin: auto;
+    border-radius: 3px;
+    border: 1px solid black ;
+}
+
+footer {
+    width: 960px;
+    margin: auto;
+    border: 1px solid black ;
+
+}
+
+#contact {
+    /* float: right; */
+    /* padding-right: 25px; */
+    border: 1px solid black ;
+    width: 50%;
+    display: inline;
+    padding-left: 20px;
+    margin-left: 20px;
+}
+
+#sectionText {
+    /* display: inline; */
+    border: 1px solid black ;
+    width: 50%;
+    float: left;
+  
+}
+
+footer #sectionText {
+    float: left;
+}
+
+section ul {
+    padding-left: 20px;
+}
