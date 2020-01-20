@@ -17,8 +17,6 @@ function CreateStore(name, max, min, avg) {
   
 }
 
-// 
-
 CreateStore.prototype.getRandom = function() {
         var final = (Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
         this.randomNumberArray.push(Math.floor(final));
@@ -128,8 +126,6 @@ var parent = document.getElementById('header');
 var titleVar = document.createElement('h1');
 titleVar.textContent = "Salmon Cookies!";
 parent.appendChild(titleVar);
-
-
 
 
 renderHeader();
