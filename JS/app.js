@@ -2,29 +2,15 @@
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am',
  '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-
- function getRandom(minCustomers, maxCustomers){
-  var final = Math.random() * (maxCustomers - minCustomers) + minCustomers;
-  return Math.floor(final);
-}
-
-
  
 var AllStores = [];
-
-
-var seattleAnswer = ''; //need to change to seattle.Answer, maybe and attach to constructor, then change the rest of the code to match
-var tokyoAnswer = '';
-var dubaiAnswer = '';
-var limaAnswer = '';
-var parisAnswer = '';
-
 
 function CreateStore(name, max, min, avg) {
   this.name = name;
   this.maxCustomers = max;
   this.minCustomers = min;
   this.aveCookiesPerC = avg;
+  this.randomNumberArray = [];
   this.aveCookieSalesPerHr = [];
   this.dailyTotal = 0;
   AllStores.push(this);
@@ -35,32 +21,21 @@ function CreateStore(name, max, min, avg) {
 
 CreateStore.prototype.getRandom = function() {
         var final = (Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
-        return Math.floor(final);
+        this.randomNumberArray.push(Math.floor(final));
+
       };
 
 CreateStore.prototype.getHourlySales = function() {
-  console.log('hourlysalearray, i am here');
-                var totalCookiesPerHour = 0;
-        
+               // this.dailyTotal = 0;
+                //this.aveCookieSalesPerHr = [];
+
               for (var i=0; i<hours.length; i++) {
-                var customersPerHour = getRandom();
-                console.log(customersPerHour)
-                var totalCookiesPerHour = Math.floor((customersPerHour * this.avgCookiesPerC));
-                this.aveCookieSalesPerHr.push(totalCookiesPerHour);
-        
-                console.log(this.aveCookieSalesPerHr);
+                this.getRandom(); // this line should be refactored to take place in the getRandom function.
+                                  // that way the array would already be populated before we try to use it.
+                this.aveCookieSalesPerHr.push(Math.floor(this.randomNumberArray[i]*this.aveCookiesPerC));
+                this.dailyTotal += this.randomNumberArray[i];
                 }
           };
-    
-CreateStore.prototype.concatArrays = function (){
-        for(var i=0; i < hours.length; i++) {
-          //console.log('we are here' + i);
-          seattleAnswer += `${hours[i]}: ${this.aveCookieSalesPerHr[i]} . `;
-          
-        }
-        return seattleAnswer;
-      }
-      
 
 
 //Instances-----------------------------------------------------------------
@@ -92,6 +67,12 @@ function renderHeader (){
     headerRow.appendChild(headerTotal);
 }
     CreateStore.prototype.body = function(){
+
+      //  console.log(this.getHourlySales());
+        
+        this.getRandom();
+        this.getHourlySales();
+
         var bodyRow = document.createElement('tr');
         table.appendChild(bodyRow); 
 
@@ -102,9 +83,10 @@ function renderHeader (){
         
         //Created the Hours by looping through the hours array and rendering hourlySales
         for (var i=0; i<hours.length; i++){
-        var bodyHours = document.createElement('td');
-        bodyHours.textContent = this.aveCookieSalesPerHr[i];
-        bodyRow.appendChild(bodyHours);
+          var bodyHours = document.createElement('td');
+          bodyHours.textContent = this.aveCookieSalesPerHr[i];
+         // console.log(this.aveCookieSalesPerHr[i] + 'this is the body rendering loop!');
+          bodyRow.appendChild(bodyHours);
         }
 
         //Grabbing Daily Total and rendering it at the end of the row.
@@ -137,24 +119,8 @@ function renderFooter (){
     table.appendChild(footerRow);
 }
 
-
-
-
-
-
-
-
-
-
-
 // executable footer--------------------
 
-seattle.getHourlySales();
-seattle.concatArrays();
-tokyo.getHourlySales();
-//tokyo.concatArrays();
-dubai.getHourlySales();
-lima.getHourlySales();
 
 // DOM Manipulation
 var parent = document.getElementById('header');
@@ -167,7 +133,8 @@ parent.appendChild(titleVar);
 
 
 renderHeader();
-for (var i=0; i<AllStores.length; i++){
+
+for(var i=0; i < AllStores.length; i++){
     AllStores[i].body();
 }
 renderFooter();
