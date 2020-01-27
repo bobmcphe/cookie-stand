@@ -10,12 +10,24 @@
 
     </ul>
 </article>
-<table id="table">
+<div id='headBox'>
+    <form id='form'>
+      <legend>New Store Info</legend>
+      <fieldset>
+        <label>Store Name</label><input name="name" type="text" required><br>
+        <label>Minimum Customers</label><input name='minCust' type='number' required><br>
+        <label>Maximum Customers</label><input name='maxCust' type='number' required><br>
+        <label>Average Purchase</label><input name='avgPer' type='number' step='.1' required>
+        <button id='subButton' type='submit'>Add Store</button>
+      </fieldset>
+    </form>
+  </div>
 
-</table>
+  <div id="table"></div>
 
 <script src="JS/app.js">
-    
+    <form id="input">
+        </form>
 </script>
 </body>
 <footer>

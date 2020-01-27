@@ -35,6 +35,15 @@ CreateStore.prototype.getHourlySales = function() {
                 }
           };
 
+ CreateStore.prototype.updateStore = function(max, min, avg){
+        this.minCustomers = min;
+        this.maxCustomers = max;
+        this.aveCookiesPerC = avg;
+        this.dailyTotal = 0;
+        this.aveCookieSalesPerHr = [];
+        this.randomNumberArray = [];
+        AllStores.push(this);
+   };
 
 //Instances-----------------------------------------------------------------
 var seattle = new CreateStore('Seattle', 65, 23, 6.3);
@@ -116,6 +125,42 @@ function renderFooter (){
     footerRow.appendChild(grandTotalSales);
     table.appendChild(footerRow);
 }
+//=================================================================================================
+
+/* on form submit will check if an existing shop with the same name exists and update if it does. Else, make a new store object. Then it kicks of the table builder function */
+function handleSubmit(event){
+  event.preventDefault();
+  var name = event.target.name.value;
+  var minCustomers = parseInt(event.target.minCust.value);
+  var maxCustomers = parseInt(event.target.maxCust.value);
+  var aveCookiesPerC = parseFloat(event.target.avgPer.value);
+  var newStore = true;
+
+  storeUpdateCheck: // go through store array and look for a same-name match to update a store instance. Resets a flag if it is found
+  for(var currentStores = 0; currentStores < AllStores.length; currentStores++){
+    if(AllStores[currentStores].name.toLowerCase() === name.toLowerCase()){
+      AllStores[currentStores].updateStore(maxCustomers, minCustomers, aveCookiesPerC);
+      newStore = false;
+      break storeUpdateCheck;
+    }
+  }
+  //creates the new store if no name match
+  if(newStore){
+    new CreateStore(name, maxCustomers, minCustomers, aveCookiesPerC);
+  }
+  renderHeader();
+  for(var i=0; i < AllStores.length; i++){
+    AllStores[i].body();
+}
+  renderFooter();
+}
+
+// initial build of the table and add listener
+renderHeader();
+renderFooter();
+var subButton = document.getElementById('form');
+subButton.addEventListener('submit', handleSubmit);
+
 
 // executable footer--------------------
 
