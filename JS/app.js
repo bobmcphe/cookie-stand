@@ -127,7 +127,7 @@ function renderFooter (){
 }
 //=================================================================================================
 
-/* on form submit will check if an existing shop with the same name exists and update if it does. Else, make a new store object. Then it kicks of the table builder function */
+
 function handleSubmit(event){
   event.preventDefault();
   var name = event.target.name.value;
@@ -136,7 +136,7 @@ function handleSubmit(event){
   var aveCookiesPerC = parseFloat(event.target.avgPer.value);
   var newStore = true;
 
-  storeUpdateCheck: // go through store array and look for a same-name match to update a store instance. Resets a flag if it is found
+  storeUpdateCheck: 
   for(var currentStores = 0; currentStores < AllStores.length; currentStores++){
     if(AllStores[currentStores].name.toLowerCase() === name.toLowerCase()){
       AllStores[currentStores].updateStore(maxCustomers, minCustomers, aveCookiesPerC);
@@ -144,7 +144,7 @@ function handleSubmit(event){
       break storeUpdateCheck;
     }
   }
-  //creates the new store if no name match
+  //creates the new store if there isn't one
   if(newStore){
     new CreateStore(name, maxCustomers, minCustomers, aveCookiesPerC);
   }
@@ -155,7 +155,7 @@ function handleSubmit(event){
   renderFooter();
 }
 
-// initial build of the table and add listener
+// first-time build of the table
 renderHeader();
 renderFooter();
 var subButton = document.getElementById('form');
